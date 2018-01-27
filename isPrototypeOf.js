@@ -1,15 +1,16 @@
 (function() {
     
-  function isPrototypeOf(objProto, objCheck) {
+  function isPrototypeOf(originalObj, objCheck) {
+    var proto = Object.getPrototypeOf(objCheck);
     // base case
-	if (Object.getPrototypeOf(objCheck) === objProto) {
+	if (proto === originalObj) {
       return true;
     // check whether the objCheck even has a prototype
-	} else if (!Object.getPrototypeOf(objCheck)) { 
+	} else if (!proto) { 
       return false;
 	// recursive case
 	} else {
-      return isPrototypeOf(objProto, Object.getPrototypeOf(objCheck))
+      return isPrototypeOf(originalObj, proto)
 	}
   }
   window.isPrototypeOf = isPrototypeOf;
