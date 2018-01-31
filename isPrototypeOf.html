@@ -41,7 +41,29 @@ tests({
       
     eq(isPrototypeOf(Object.prototype, myDog), true);
       
-  }
+  },
+    
+  'It should throw an Error if the first argument passed to the function is not an object':     function() {
+    var thrownError = false;
+    try {
+      isPrototypeOf('', {})
+    } catch(e) {
+      thrownError = e instanceof Error;      
+    }
+      
+    eq(thrownError, true);
+  },
+    
+  'It should throw an Error if the second argument passed to the function is not an object': function() {
+    var thrownError = false;
+    try {
+      isPrototypeOf({}, 1)
+    } catch(e) {
+      thrownError = e instanceof Error;      
+    }
+      
+      eq(thrownError, true);
+    }
  
 });
     

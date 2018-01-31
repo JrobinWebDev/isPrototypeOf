@@ -1,10 +1,12 @@
 (function() {
+  // used to check for the presence of an object
+  var objToStringCheck = Object.prototype.toString;
     
   function isPrototypeOf(originalObj, objCheck) {
-    if (typeof originalObj !== 'object') {
+    if (objToStringCheck.call(originalObj) !== '[object Object]') {
       throw Error('First parameter must be an object');
     }
-    if (typeof objCheck !== 'object') {
+    if (objToStringCheck.call(objCheck) !== '[object Object]') {
       throw Error('Second parameter must be an object');
     } 
       
